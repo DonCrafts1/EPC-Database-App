@@ -5,6 +5,7 @@ The app was built to streamline the waste tracking and presentation process. It 
 - User authentication, roles (Owner, Helper)
 - Data analytics
 - Report generation
+
 The app is currently being used by the group.
 
 Basic database diagram:
