@@ -8,8 +8,8 @@ The app was built to streamline the waste tracking and presentation process. It 
 The app is currently being used by the group.
 
 Basic database diagram:
-<img width="710" alt="Screenshot 2023-03-22 at 10 07 30 PM" src="https://github.com/DonCrafts1/EPC-Database-App/assets/24728602/ab536137-b2f3-4430-85c3-47d510a12524">
 
+<img width="710" alt="Screenshot 2023-03-22 at 10 07 30 PM" src="https://github.com/DonCrafts1/EPC-Database-App/assets/24728602/ab536137-b2f3-4430-85c3-47d510a12524">
 
 The MySQL file you can use to initialize the schema is in the Github repo.
 
