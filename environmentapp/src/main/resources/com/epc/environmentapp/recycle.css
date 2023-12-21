@@ -1,0 +1,52 @@
+#loginbackground{
+     -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(53,233,178,1), rgba(91,232,79,1));
+}
+/*
+-fx-background-color:  #7ce063
+*/
+
+#loginbutton{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(45,233,178,1), rgba(100,232,79,1));
+}
+ /*-fx-background-color: #4cb332*/
+ 
+#proceedbutton{
+    -fx-background-color: linear-gradient(from 100% 100% to 0% 0%, rgba(45,233,178,1), rgba(100,232,79,1));
+}
+
+.choice-box .label{
+    -fx-font-size: 20;
+    -fx-font-family: "Avenir";
+}
+
+#roleChoiceBox{
+    -fx-font-size: 13;
+    -fx-font-family: "Avenir";
+}
+
+#background {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(53,223,130,1), rgba(91,212,90,1));
+}
+
+.table-view {
+    -fx-font-size: 12;
+    -fx-font-family: "Avenir";
+}
+
+/*.table-view .column-header-background{
+    -fx-background-color: linear-gradient(to bottom, #1dbbdd44, #93f9b944);
+    -fx-background-radius: 7px 7px 0px 0px;
+    -fx-background-insets: 0 11px 0 0;
+    -fx-padding: 0 0 5px 0;
+}*/
+
+.table-view .label{
+    -fx-font-size: 16;
+}
+
+/*.table-view .column-header {
+    -fx-background-color: transparent;
+}*/
+
+
+

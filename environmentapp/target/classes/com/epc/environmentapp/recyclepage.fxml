@@ -1,0 +1,930 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<Pane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1000.0" stylesheets="@recycle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epc.environmentapp.RecycleController">
+   <children>
+      <Label fx:id="helloLabel" layoutX="44.0" layoutY="75.0" prefHeight="35.0" prefWidth="490.0" text="Hello, ">
+         <font>
+            <Font name="Avenir Book" size="23.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="73.0" fitWidth="86.0" layoutX="26.0" layoutY="583.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../IEP.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="43.0" layoutY="34.0" text="Integrated Recycling Services" textFill="#1b540c">
+         <font>
+            <Font name="Avenir Next Bold" size="34.0" />
+         </font>
+      </Label>
+      <Label layoutX="540.0" layoutY="38.0" text="Dashboard">
+         <font>
+            <Font name="Avenir Book" size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="transferOwnershipButton" layoutX="420.0" layoutY="611.0" mnemonicParsing="false" onAction="#transferOwnership" prefHeight="35.0" prefWidth="216.0" style="-fx-background-radius: 10;" text="TRANSFER OWNERSHIP" textAlignment="CENTER" textFill="RED" visible="false">
+         <font>
+            <Font name="Avenir Book" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="logoutButton" layoutX="843.0" layoutY="610.0" mnemonicParsing="false" onAction="#logoutOnAction" prefHeight="34.0" prefWidth="104.0" style="-fx-background-radius: 10;" text="Log Out" textAlignment="CENTER" textFill="#0082ff">
+         <font>
+            <Font name="Avenir Book" size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="657.0" layoutY="610.0" mnemonicParsing="false" onAction="#switchToFoodScene" prefHeight="37.0" prefWidth="167.0" style="-fx-background-radius: 10;" text="Data Overview" textAlignment="CENTER">
+         <font>
+            <Font name="Avenir Book" size="17.0" />
+         </font>
+      </Button>
+      <Pane fx:id="lookPane" layoutX="357.0" layoutY="123.0" prefHeight="453.0" prefWidth="286.0" style="-fx-background-color: #e6f7e4; -fx-background-radius: 30; -fx-border-radius: 30;">
+         <children>
+            <Button alignment="CENTER" layoutX="37.0" layoutY="113.0" mnemonicParsing="false" onAction="#lookup" prefHeight="63.0" prefWidth="215.0" style="-fx-background-radius: 10;" text="Lookup Bin">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="37.0" layoutY="208.0" mnemonicParsing="false" onAction="#allRecords" prefHeight="63.0" prefWidth="215.0" style="-fx-background-radius: 15;" text="All Bin Entries">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="37.0" layoutY="305.0" mnemonicParsing="false" onAction="#viewBinList" prefHeight="63.0" prefWidth="215.0" style="-fx-background-radius: 15;" text="View Bin List">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Label layoutX="49.0" layoutY="48.0" text="Lookup Items" underline="true">
+               <font>
+                  <Font name="Avenir Next Bold" size="29.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.7038661241531372" green="0.7368420958518982" blue="0.2422027289867401" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006711409395973154">
+                           <color>
+                              <Color red="0.7038661241531372" green="0.7368420958518982" blue="0.2422027289867401" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.6184210777282715" green="0.6059667468070984" blue="0.36933478713035583" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+         </children></Pane>
+      <Pane fx:id="accPane" layoutX="681.0" layoutY="131.0" prefHeight="442.0" prefWidth="273.0" style="-fx-background-color: #f6f7e4; -fx-background-radius: 30; -fx-border-radius: 30;">
+         <children>
+            <Button alignment="CENTER" layoutX="41.0" layoutY="150.0" mnemonicParsing="false" onAction="#addAccount" prefHeight="63.0" prefWidth="192.0" style="-fx-background-radius: 15;" text="Create Accounts" textFill="#4e8647">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="viewAccountButton" alignment="CENTER" layoutX="41.0" layoutY="238.0" mnemonicParsing="false" onAction="#viewAccount" prefHeight="63.0" prefWidth="192.0" style="-fx-background-radius: 15;" text="View Accounts" textFill="#588a59">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Label layoutX="72.0" layoutY="42.0" text="Accounts" underline="true">
+               <font>
+                  <Font name="Avenir Next Bold" size="29.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.6184210777282715" green="0.6059667468070984" blue="0.36933478713035583" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.7038661241531372" green="0.7368420958518982" blue="0.2422027289867401" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="enterPane" layoutX="44.0" layoutY="131.0" prefHeight="442.0" prefWidth="273.0" style="-fx-background-color: #f6f7e4; -fx-background-radius: 30; -fx-border-radius: 30;">
+         <children>
+            <Button fx:id="addBinButton" alignment="CENTER" layoutX="28.0" layoutY="87.0" mnemonicParsing="false" onAction="#addBin" prefHeight="63.0" prefWidth="220.0" style="-fx-background-radius: 15;" text="Add Bin">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="addEntryButton" alignment="CENTER" layoutX="28.0" layoutY="175.0" mnemonicParsing="false" onAction="#addEntry" prefHeight="63.0" prefWidth="220.0" style="-fx-background-radius: 15;" text="Add Entry">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="28.0" layoutY="350.0" mnemonicParsing="false" onAction="#enterWeeklyTotal" prefHeight="63.0" prefWidth="220.0" style="-fx-background-radius: 15;" text="Enter Weekly Total">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Label layoutX="57.0" layoutY="27.0" text="Enter Items" underline="true">
+               <font>
+                  <Font name="Avenir Next Bold" size="29.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.6184210777282715" green="0.6059667468070984" blue="0.36933478713035583" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.7038661241531372" green="0.7368420958518982" blue="0.2422027289867401" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Button alignment="CENTER" layoutX="28.0" layoutY="263.0" mnemonicParsing="false" onAction="#binCategoryView" prefHeight="63.0" prefWidth="220.0" style="-fx-background-radius: 15;" text="Edit Bin Categories">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="blockPane" layoutY="-3.0" prefHeight="685.0" prefWidth="1013.0" style="-fx-background-color: rgb(0,0,0,0.4);" visible="false" />
+      <Pane fx:id="addBinPane" layoutX="165.0" layoutY="140.0" prefHeight="427.0" prefWidth="681.0" style="-fx-background-color: rgba(10, 10, 10, 0.5);" visible="false">
+         <children>
+            <Label alignment="CENTER" layoutX="-3.0" layoutY="9.0" prefHeight="59.0" prefWidth="690.0" text="ADD BIN" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="40.0" />
+               </font>
+            </Label>
+            <Label layoutX="46.0" layoutY="85.0" text="Code: " textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="44.0" layoutY="148.0" text="Name:" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="44.0" layoutY="219.0" text="Max Weight:" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="44.0" layoutY="265.0" text="Type:" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="337.0" layoutY="220.0" text="kg" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="367.0" layoutY="276.0" text="Category:" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="codeEnterTextField" layoutX="162.0" layoutY="84.0" prefHeight="42.0" prefWidth="463.0" promptText="Enter Bin Code">
+               <font>
+                  <Font name="Avenir Book" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="binNameEnterTextField" layoutX="162.0" layoutY="148.0" prefHeight="42.0" prefWidth="463.0" promptText="Enter Bin Name">
+               <font>
+                  <Font name="Avenir Book" size="18.0" />
+               </font>
+            </TextField>
+            <Button fx:id="addBinCancelButton" alignment="CENTER" layoutX="335.0" layoutY="359.0" mnemonicParsing="false" onAction="#addBinCancel" prefHeight="38.0" prefWidth="132.0" text="Cancel">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="addBinOKButton" alignment="CENTER" layoutX="490.0" layoutY="359.0" mnemonicParsing="false" onAction="#addBinOK" prefHeight="38.0" prefWidth="132.0" text="Add">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <TextField fx:id="binWeightEnterTextField" layoutX="162.0" layoutY="211.0" prefHeight="42.0" prefWidth="170.0" promptText="Enter Max Weight">
+               <font>
+                  <Font name="Avenir Book" size="18.0" />
+               </font>
+            </TextField>
+            <ChoiceBox id="typeOfWasteSelect" fx:id="typeOfBinSelect" layoutX="162.0" layoutY="267.0" prefHeight="43.0" prefWidth="175.0" stylesheets="@recycle.css" value="" />
+            <Label fx:id="binAlreadyExistsLabel" layoutX="45.0" layoutY="319.0" prefHeight="39.0" prefWidth="490.0" text="Warning: Bin already exists" textFill="RED">
+               <font>
+                  <Font name="Avenir Book" size="22.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="selectCategoryBox" layoutX="456.0" layoutY="272.0" prefHeight="32.0" prefWidth="166.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="lookupPane" layoutX="214.0" layoutY="142.0" prefHeight="359.0" prefWidth="575.0" style="-fx-background-color: rgba(10, 10, 10, 0.5);" visible="false">
+         <children>
+            <Button fx:id="binLookupButton" alignment="CENTER" layoutX="404.0" layoutY="290.0" mnemonicParsing="false" onAction="#lookupOK" prefHeight="38.0" prefWidth="132.0" text="Find">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Label fx:id="binCodeLabel1" layoutX="30.0" layoutY="141.0" text="Code: " textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutY="9.0" prefHeight="59.0" prefWidth="575.0" text="BIN LOOKUP" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="40.0" />
+               </font>
+            </Label>
+            <TextField fx:id="binCodeEnterTextField" layoutX="134.0" layoutY="142.0" prefHeight="42.0" prefWidth="404.0" promptText="Enter Bin Code">
+               <font>
+                  <Font name="Avenir Book" size="18.0" />
+               </font>
+            </TextField>
+            <Label fx:id="binNotFoundLabel" alignment="CENTER_RIGHT" layoutX="103.0" layoutY="192.0" prefHeight="32.0" prefWidth="434.0" text="Bin not found" textFill="RED" visible="false">
+               <font>
+                  <Font name="Avenir Book" size="22.0" />
+               </font>
+            </Label>
+            <Button alignment="CENTER" layoutX="253.0" layoutY="290.0" mnemonicParsing="false" onAction="#lookupCancel" prefHeight="38.0" prefWidth="132.0" text="Cancel">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="binCategoriesPane" layoutX="192.0" layoutY="152.0" prefHeight="402.0" prefWidth="627.0" style="-fx-background-color: rgba(10, 10, 10, 0.5);" visible="false">
+         <children>
+            <Label alignment="CENTER" layoutY="9.0" prefHeight="59.0" prefWidth="628.0" text="BIN CATEGORIES" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="40.0" />
+               </font>
+            </Label>
+            <TableView fx:id="binCategoryTable" layoutX="26.0" layoutY="76.0" prefHeight="300.0" prefWidth="270.0">
+              <columns>
+                <TableColumn fx:id="binCategoryCol" prefWidth="269.0" text="Bin Categories" />
+              </columns>
+            </TableView>
+            <TextField fx:id="addBinCategoryTextField" layoutX="382.0" layoutY="115.0" prefHeight="33.0" prefWidth="221.0" promptText="Add Bin Category...">
+               <font>
+                  <Font name="Avenir Next Bold" size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="deleteBinCategoryTextField" editable="false" layoutX="382.0" layoutY="212.0" prefHeight="33.0" prefWidth="221.0" promptText="Select Category to Delete...">
+               <font>
+                  <Font name="Avenir Next Bold" size="15.0" />
+               </font>
+            </TextField>
+            <Button fx:id="binCategoryAddButton" alignment="CENTER" layoutX="471.0" layoutY="162.0" mnemonicParsing="false" onAction="#binCategoryAdd" prefHeight="24.0" prefWidth="132.0" text="Add">
+               <font>
+                  <Font name="Avenir Book" size="14.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="471.0" layoutY="338.0" mnemonicParsing="false" onAction="#binCategoryBack" prefHeight="38.0" prefWidth="132.0" text="Back">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="471.0" layoutY="259.0" mnemonicParsing="false" onAction="#binCategoryDelete" prefHeight="24.0" prefWidth="132.0" text="Delete" textFill="#b22b2b">
+               <font>
+                  <Font name="Avenir Book" size="14.0" />
+               </font>
+            </Button>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="addEntryPane" layoutX="165.0" layoutY="107.0" prefHeight="432.0" prefWidth="671.0" style="-fx-background-color: rgba(10, 10, 10, 0.5);" visible="false">
+         <children>
+            <Label alignment="CENTER" layoutY="9.0" prefHeight="59.0" prefWidth="670.0" text="ADD ENTRY" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="40.0" />
+               </font>
+            </Label>
+            <Label fx:id="binCodeAddEntryLabel" layoutX="32.0" layoutY="60.0" text="Bin Code: " textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="binNameAddEntryLabel" layoutX="32.0" layoutY="96.0" text="Bin Name:" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <TextField fx:id="weightTextField" layoutX="265.0" layoutY="140.0" prefHeight="48.0" prefWidth="372.0" promptText="Weight">
+               <font>
+                  <Font name="Avenir Book" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="noteTextField" layoutX="265.0" layoutY="200.0" prefHeight="48.0" prefWidth="372.0" promptText="Notes">
+               <font>
+                  <Font name="Avenir Book" size="12.0" />
+               </font>
+            </TextField>
+            <ChoiceBox id="typeOfWasteSelect" fx:id="typeOfWasteSelect" layoutX="265.0" layoutY="258.0" prefHeight="49.0" prefWidth="371.0" stylesheets="@recycle.css" value="">
+               
+            </ChoiceBox>
+            <Button alignment="CENTER" layoutX="340.0" layoutY="320.0" mnemonicParsing="false" onAction="#deselectImage" prefHeight="35.0" prefWidth="77.0" text="Deselect" textFill="RED">
+               <font>
+                  <Font name="Avenir Book" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="31.0" layoutY="142.0" text="Weight (in kg):" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <Button alignment="CENTER" layoutX="503.0" layoutY="373.0" mnemonicParsing="false" onAction="#addEntryOK" prefHeight="38.0" prefWidth="132.0" text="Add">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="354.0" layoutY="372.0" mnemonicParsing="false" onAction="#addEntryCancel" prefHeight="38.0" prefWidth="132.0" text="Cancel">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Label fx:id="selectImageLabel" layoutX="426.0" layoutY="326.0" prefHeight="24.0" prefWidth="231.0" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Book" size="11.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="202.0" text="Notes:" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="261.0" text="Type of Waste:" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="318.0" text="Image:" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="weightNotValidLabel" layoutX="32.0" layoutY="363.0" prefHeight="27.0" prefWidth="290.0" text="Enter a valid weight!" textFill="RED" visible="false">
+               <font>
+                  <Font name="Avenir Book" size="22.0" />
+               </font>
+            </Label>
+            <Button alignment="CENTER" layoutX="266.0" layoutY="320.0" mnemonicParsing="false" onAction="#selectImage" prefHeight="35.0" prefWidth="67.0" text="Select">
+               <font>
+                  <Font name="Avenir Book" size="14.0" />
+               </font>
+            </Button>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="lookupViewPane" layoutX="31.0" layoutY="35.0" prefHeight="609.0" prefWidth="940.0" style="-fx-background-color: rgba(10, 10, 10, 0.5);" visible="false">
+         <children>
+            <Label fx:id="binCodeLookupLabel" alignment="CENTER_RIGHT" layoutX="609.0" layoutY="13.0" prefHeight="43.0" prefWidth="307.0" text="Bin Code: " textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="binNameLookupLabel" layoutX="20.0" layoutY="13.0" text="Bin Name:" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <TableView fx:id="lookupTable" layoutX="22.0" layoutY="68.0" prefHeight="459.0" prefWidth="897.0" stylesheets="@recycle.css">
+              <columns>
+                  <TableColumn fx:id="usernameCol" prefWidth="142.58433151245117" text="Username" />
+                <TableColumn fx:id="timeStampCol" prefWidth="195.9156494140625" text="Time Stamp" />
+                <TableColumn fx:id="typeOfWasteCol" prefWidth="146.78143310546875" text="Type Of Waste" />
+                  <TableColumn fx:id="weightCol" prefWidth="143.5865478515625" text="Weight" />
+                  <TableColumn fx:id="notesCol" prefWidth="171.5452880859375" text="Notes" />
+                  <TableColumn fx:id="infoCol" prefWidth="92.48919677734375" text="Info" />
+              </columns>
+            </TableView>
+            <Label fx:id="binLookupWeightLabel" layoutX="20.0" layoutY="545.0" text="Current Weight:" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <Button alignment="CENTER" layoutX="787.0" layoutY="547.0" mnemonicParsing="false" onAction="#lookupBack" prefHeight="38.0" prefWidth="132.0" text="Back">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="lookupClearAllConfirmButton" alignment="CENTER" layoutX="642.0" layoutY="547.0" mnemonicParsing="false" onAction="#lookupClearAllConfirm" prefHeight="38.0" prefWidth="132.0" text="CONFIRM" textFill="RED" visible="false">
+               <font>
+                  <Font name="Avenir Next Bold" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="lookupClearAllButton" alignment="CENTER" layoutX="586.0" layoutY="547.0" mnemonicParsing="false" onAction="#lookupClearAll" prefHeight="38.0" prefWidth="188.0" text="CLEAR CURRENT WEIGHT" textFill="RED">
+               <font>
+                  <Font name="Avenir Next Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="allRecordsPane" layoutX="31.0" layoutY="38.0" prefHeight="609.0" prefWidth="940.0" style="-fx-background-color: rgba(10, 10, 10, 0.5);" visible="false">
+         <children>
+            <Label fx:id="allRecordsWeekWeightLabel" layoutX="24.0" layoutY="550.0" text="This Week: " textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <Button alignment="CENTER" layoutX="788.0" layoutY="549.0" mnemonicParsing="false" onAction="#allRecordsBack" prefHeight="38.0" prefWidth="132.0" text="Back">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <TableView fx:id="allRecordsTable" layoutX="22.0" layoutY="70.0" prefHeight="465.0" prefWidth="897.0" stylesheets="@recycle.css">
+               <columns>
+                  <TableColumn fx:id="binCodeCol" maxWidth="110.0" prefWidth="110.0" text="Bin Code" />
+                  <TableColumn fx:id="usernameColAll" maxWidth="142.0" prefWidth="122.95664978027344" text="Username" />
+                  <TableColumn fx:id="timeStampColAll" maxWidth="187.0" prefWidth="186.22378540039062" text="Time Stamp" />
+                  <TableColumn fx:id="typeOfWasteColAll" maxWidth="133.0" prefWidth="133.0" text="Type Of Waste" />
+                  <TableColumn fx:id="weightColAll" maxWidth="115.0" prefWidth="95.3121337890625" text="Weight" />
+                  <TableColumn fx:id="notesColAll" maxWidth="250.0" minWidth="0.0" prefWidth="163.79290771484375" text="Notes" />
+                  <TableColumn fx:id="editColAll" maxWidth="100.0" prefWidth="83.0" text="Info" />
+               </columns>
+            </TableView>
+            <Label layoutX="324.0" layoutY="3.0" text="ALL RECORDS" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="42.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="addAccountPane" layoutX="159.0" layoutY="148.0" prefHeight="387.0" prefWidth="683.0" style="-fx-background-color: rgba(10, 10, 10, 0.7);" visible="false">
+         <children>
+            <Label alignment="CENTER" layoutX="-1.0" layoutY="25.0" prefHeight="59.0" prefWidth="681.0" text="CREATE ACCOUNTS" textFill="#bef8b3">
+               <font>
+                  <Font name="Avenir Next Bold" size="40.0" />
+               </font>
+            </Label>
+            <TextField fx:id="accountNameTextField" layoutX="262.0" layoutY="117.0" prefHeight="42.0" prefWidth="359.0" promptText="Enter Account Username">
+               <font>
+                  <Font name="Avenir Book" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="accountPassTextField" layoutX="262.0" layoutY="174.0" prefHeight="42.0" prefWidth="359.0" promptText="Enter Account Password">
+               <font>
+                  <Font name="Avenir Book" size="18.0" />
+               </font>
+            </TextField>
+            <Label alignment="CENTER" layoutX="36.0" layoutY="119.0" prefHeight="43.0" prefWidth="203.0" text="ACC. USERNAME" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="37.0" layoutY="172.0" prefHeight="43.0" prefWidth="203.0" text="ACC. PASSWORD" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="21.0" />
+               </font>
+            </Label>
+            <Button fx:id="addAllAccountsButton" alignment="CENTER" layoutX="489.0" layoutY="303.0" mnemonicParsing="false" onAction="#addAccountOK" prefHeight="38.0" prefWidth="132.0" text="Confirm">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="330.0" layoutY="303.0" mnemonicParsing="false" onAction="#addAccountCancel" prefHeight="38.0" prefWidth="132.0" text="Cancel">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Label fx:id="addAccountErrorLabel" layoutX="48.0" layoutY="230.0" prefHeight="40.0" prefWidth="324.0" text="Error..." textFill="#f82d2d" visible="false">
+               <font>
+                  <Font name="Avenir Book" size="22.0" />
+               </font>
+            </Label>
+            <ChoiceBox id="roleChoiceBox" fx:id="roleChoiceBox" layoutX="444.0" layoutY="237.0" prefHeight="32.0" prefWidth="176.0" stylesheets="@recycle.css" value="" />
+         </children>
+      </Pane>
+      <Label fx:id="errorLabel" alignment="CENTER_RIGHT" layoutX="625.0" layoutY="75.0" prefHeight="35.0" prefWidth="320.0" text="Error, can't seem to connect..." textFill="RED" visible="false">
+         <font>
+            <Font name="Avenir Book" size="23.0" />
+         </font>
+      </Label>
+      <Pane fx:id="viewRecordPane" prefHeight="676.0" prefWidth="1000.0" style="-fx-background-color: rgb(0,0,0,0.4);" visible="false">
+         <children>
+            <Pane layoutX="170.0" layoutY="90.0" prefHeight="461.0" prefWidth="661.0" style="-fx-background-color: rgba(10, 10, 10, 0.7);">
+               <children>
+                  <Label layoutX="34.0" layoutY="63.0" text="Bin Code" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="viewRecordCodeLabel" layoutX="35.0" layoutY="97.0" prefHeight="43.0" prefWidth="124.0" text="codetext" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Book" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="34.0" layoutY="206.0" text="Time" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="viewRecordTimestampLabel" layoutX="35.0" layoutY="239.0" prefHeight="43.0" prefWidth="176.0" text="XXXX-XX-XX XX:XX:XX" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Book" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="278.0" text="Weight" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="viewRecordWeightLabel" layoutX="36.0" layoutY="312.0" prefHeight="43.0" prefWidth="159.0" text="weighttext" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Book" size="21.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="44.0" layoutY="2.0" prefHeight="59.0" prefWidth="575.0" text="VIEW ENTRY" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Bold" size="35.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="editBinAlreadyExistsLabel1" alignment="CENTER_RIGHT" layoutX="116.0" layoutY="293.0" prefHeight="32.0" prefWidth="434.0" text="Warning: Bin already exists" textFill="RED" visible="false">
+                     <font>
+                        <Font name="Avenir Book" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="238.0" layoutY="63.0" text="Bin Type" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="viewRecordBinTypeLabel" layoutX="239.0" layoutY="96.0" prefHeight="43.0" prefWidth="195.0" text="typetext" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Book" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="476.0" layoutY="63.0" text="Input User" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="viewRecordUserLabel" alignment="CENTER_RIGHT" layoutX="418.0" layoutY="97.0" prefHeight="43.0" prefWidth="211.0" text="usertext" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Book" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="35.0" layoutY="359.0" text="Notes" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="viewRecordsNotesLabel" layoutX="37.0" layoutY="395.0" prefHeight="43.0" prefWidth="382.0" text="notes" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Book" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="viewRecordImageLabel" alignment="CENTER" layoutX="204.0" layoutY="150.0" prefHeight="178.0" prefWidth="323.0" text="NO IMAGE UPLOAD" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Button alignment="CENTER" layoutX="507.0" layoutY="400.0" mnemonicParsing="false" onAction="#viewRecordBack" prefHeight="38.0" prefWidth="132.0" text="Back">
+                     <font>
+                        <Font name="Avenir Book" size="17.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="33.0" layoutY="132.0" text="Bin Name" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="viewRecordBinNameLabel" layoutX="34.0" layoutY="165.0" prefHeight="43.0" prefWidth="133.0" text="name" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Book" size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="userViewPane" layoutX="31.0" layoutY="45.0" prefHeight="609.0" prefWidth="940.0" style="-fx-background-color: rgba(10, 10, 10, 0.5);" visible="false">
+         <children>
+            <Label alignment="CENTER" layoutX="20.0" layoutY="13.0" prefHeight="43.0" prefWidth="902.0" text="Users Dashboard" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <TableView fx:id="accountTable" layoutX="22.0" layoutY="68.0" prefHeight="470.0" prefWidth="549.0" stylesheets="@recycle.css">
+               <columns>
+                  <TableColumn fx:id="roleCol" prefWidth="61.56377029418945" text="Role" />
+                  <TableColumn fx:id="userCol" prefWidth="162.36058807373047" text="Username" />
+                  <TableColumn fx:id="passCol" prefWidth="166.62155151367188" text="Password" />
+                  <TableColumn fx:id="userAddCol" prefWidth="156.49996948242188" text="User Added User" />
+               </columns>
+            </TableView>
+            <Button alignment="CENTER" layoutX="788.0" layoutY="552.0" mnemonicParsing="false" onAction="#removeAccountBack" prefHeight="38.0" prefWidth="132.0" text="Back">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Pane fx:id="removeUserPane" layoutX="578.0" layoutY="67.0" prefHeight="471.0" prefWidth="344.0" style="-fx-background-color: rgb(25,0,0,0.4); -fx-border-color: #000000; -fx-background-radius: 25; -fx-border-radius: 25;">
+               <children>
+                  <Label alignment="CENTER" layoutY="8.0" prefHeight="43.0" prefWidth="344.0" text="Edit User" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="15.0" layoutY="48.0" text="Username" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="editUsernameTextField" layoutX="14.0" layoutY="87.0" prefHeight="39.0" prefWidth="317.0" promptText="Selected User">
+                     <font>
+                        <Font name="Avenir Book" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="14.0" layoutY="137.0" text="Password" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="editUserPassTextField" layoutX="14.0" layoutY="174.0" prefHeight="39.0" prefWidth="315.0" promptText="Selected User's Password">
+                     <font>
+                        <Font name="Avenir Book" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="14.0" layoutY="220.0" text="Role" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Next Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox id="roleChoiceBox" fx:id="roleEditChoiceBox" disable="true" layoutX="14.0" layoutY="256.0" prefHeight="43.0" prefWidth="315.0" stylesheets="@recycle.css" value="" />
+                  <Button fx:id="removeAccountButton" alignment="CENTER" layoutX="148.0" layoutY="330.0" mnemonicParsing="false" onAction="#removeAccountOK" prefHeight="35.0" prefWidth="181.0" text="DELETE ACCOUNT" textFill="RED">
+                     <font>
+                        <Font name="Avenir Next Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="removeAccountErrorLabel" layoutX="19.0" layoutY="277.0" prefHeight="71.0" prefWidth="336.0" text="Error" textFill="#ff0202" visible="false">
+                     <font>
+                        <Font name="Avenir Book" size="21.0" />
+                     </font>
+                  </Label>
+                  <Button alignment="CENTER" layoutX="148.0" layoutY="384.0" mnemonicParsing="false" onAction="#confirmAccountEdit" prefHeight="35.0" prefWidth="181.0" text="CONFIRM EDIT">
+                     <font>
+                        <Font name="Avenir Next Bold" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="enterWeeklyTotalPane" layoutX="201.0" layoutY="136.0" prefHeight="368.0" prefWidth="605.0" style="-fx-background-color: rgba(10, 10, 10, 0.5);" visible="false">
+         <children>
+            <Label alignment="CENTER" layoutX="8.0" layoutY="23.0" prefHeight="59.0" prefWidth="575.0" text="ENTER WEEKLY TOTAL" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="40.0" />
+               </font>
+            </Label>
+            <Label layoutX="85.0" layoutY="80.0" prefHeight="39.0" prefWidth="181.0" text="Select Week →" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Book" size="26.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="datePicker" layoutX="266.0" layoutY="82.0" prefHeight="35.0" prefWidth="247.0" />
+            <Label alignment="CENTER" layoutX="-6.0" layoutY="137.0" prefHeight="39.0" prefWidth="606.0" text="Week Selected: " textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="weekDisplayLabel" alignment="CENTER" layoutX="-8.0" layoutY="176.0" prefHeight="39.0" prefWidth="607.0" text="Loading..." textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Book" size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="71.0" layoutY="233.0" text="Weight:" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="26.0" />
+               </font>
+            </Label>
+            <TextField fx:id="enterWeekWeightTextField" layoutX="184.0" layoutY="235.0" prefHeight="40.0" prefWidth="217.0">
+               <font>
+                  <Font name="Avenir Book" size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="406.0" layoutY="238.0" text="kg" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="enterWeeklyTotalErrorLabel" alignment="CENTER_RIGHT" layoutX="15.0" layoutY="300.0" prefHeight="32.0" prefWidth="251.0" text="Warning: Invalid input" textFill="RED" visible="false">
+               <font>
+                  <Font name="Avenir Book" size="22.0" />
+               </font>
+            </Label>
+            <Button alignment="CENTER" layoutX="293.0" layoutY="297.0" mnemonicParsing="false" onAction="#enterWeeklyTotalCancel" prefHeight="38.0" prefWidth="132.0" text="Cancel">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="442.0" layoutY="297.0" mnemonicParsing="false" onAction="#enterWeeklyTotalConfirm" prefHeight="38.0" prefWidth="132.0" text="Add">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="448.0" layoutY="239.0" mnemonicParsing="false" onAction="#enterWeeklyTotalReset" prefHeight="32.0" prefWidth="95.0" text="Real Value">
+               <font>
+                  <Font name="Avenir Book" size="14.0" />
+               </font>
+            </Button>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="binListPane" layoutX="33.0" layoutY="41.0" prefHeight="609.0" prefWidth="940.0" style="-fx-background-color: rgba(10, 10, 10, 0.5);" visible="false">
+         <children>
+            <Button alignment="CENTER" layoutX="784.0" layoutY="549.0" mnemonicParsing="false" onAction="#viewBinListBack" prefHeight="38.0" prefWidth="132.0" text="Back">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <TableView fx:id="binListTable" layoutX="25.0" layoutY="72.0" prefHeight="465.0" prefWidth="891.0" stylesheets="@recycle.css">
+               <columns>
+                  <TableColumn fx:id="LbinCategoryCol" maxWidth="227.15841674804688" prefWidth="124.17996597290039" resizable="false" text="Bin Category" />
+                  <TableColumn fx:id="LbinNameCol" maxWidth="330.8199920654297" prefWidth="179.24859619140625" resizable="false" text="Bin Name" />
+                  <TableColumn fx:id="LbinCodeCol" maxWidth="240.75140380859375" prefWidth="101.060546875" resizable="false" text="Bin Code" />
+                  <TableColumn fx:id="LbinTypeCol" maxWidth="150.939453125" prefWidth="130.3724365234375" resizable="false" text="Bin Type" />
+                  <TableColumn fx:id="LbinContainsCol" maxWidth="146.1275634765625" prefWidth="128.68524169921875" resizable="false" text="Current Weight" />
+                  <TableColumn fx:id="LbinMaxWeightCol" maxWidth="157.81475830078125" prefWidth="138.30999755859375" resizable="false" text="Max Weight" />
+                  <TableColumn fx:id="LbinEditCol" maxWidth="108.0" minWidth="0.0" prefWidth="86.19000244140625" resizable="false" text="Edit" />
+               </columns>
+            </TableView>
+            <Label layoutX="496.0" layoutY="10.0" text="BIN LIST" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="42.0" />
+               </font>
+            </Label>
+            <Button fx:id="isSearchUsingNameButton" layoutX="26.0" layoutY="549.0" mnemonicParsing="false" onAction="#switchBinSearch" prefHeight="38.0" prefWidth="89.0" text="Name">
+               <font>
+                  <Font name="Avenir Next Bold" size="14.0" />
+               </font>
+            </Button>
+            <TextField fx:id="binSearchTextField" layoutX="127.0" layoutY="549.0" prefHeight="38.0" prefWidth="256.0" promptText="Search bin using name">
+               <font>
+                  <Font name="Avenir Next Bold" size="13.0" />
+               </font>
+            </TextField>
+            <ComboBox fx:id="binListSelectCategoryBox" layoutX="26.0" layoutY="20.0" prefHeight="40.0" prefWidth="237.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="editBinPane" layoutX="205.0" layoutY="128.0" prefHeight="431.0" prefWidth="619.0" style="-fx-background-color: rgba(10, 10, 10, 0.5);" visible="false">
+         <children>
+            <Label alignment="CENTER" layoutY="14.0" prefHeight="59.0" prefWidth="619.0" text="EDIT BIN" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="35.0" />
+               </font>
+            </Label>
+            <Label layoutX="47.0" layoutY="82.0" text="Code: " textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <TextField fx:id="editCodeTextField" layoutX="163.0" layoutY="81.0" prefHeight="42.0" prefWidth="404.0" promptText="Enter Bin Code">
+               <font>
+                  <Font name="Avenir Book" size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="46.0" layoutY="145.0" text="Name:" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <TextField fx:id="editBinNameTextField" layoutX="163.0" layoutY="145.0" prefHeight="42.0" prefWidth="404.0" promptText="Enter Bin Name">
+               <font>
+                  <Font name="Avenir Book" size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="47.0" layoutY="215.0" text="Max Weight:" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="editBinWeightTextField" layoutX="163.0" layoutY="208.0" prefHeight="42.0" prefWidth="170.0" promptText="Enter Max Weight">
+               <font>
+                  <Font name="Avenir Book" size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="338.0" layoutY="217.0" text="kg" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="editBinAlreadyExistsLabel" alignment="CENTER_RIGHT" layoutX="132.0" layoutY="327.0" prefHeight="32.0" prefWidth="434.0" text="Warning: Bin already exists" textFill="RED" visible="false">
+               <font>
+                  <Font name="Avenir Book" size="22.0" />
+               </font>
+            </Label>
+            <Button alignment="CENTER" layoutX="46.0" layoutY="367.0" mnemonicParsing="false" onAction="#viewLookupBinEntries" prefHeight="38.0" prefWidth="216.0" text="Lookup Bin Entries">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="281.0" layoutY="367.0" mnemonicParsing="false" onAction="#editBinBack" prefHeight="38.0" prefWidth="132.0" text="Back">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="432.0" layoutY="367.0" mnemonicParsing="false" onAction="#editBinOK" prefHeight="38.0" prefWidth="132.0" text="Edit">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Button>
+            <Label layoutX="48.0" layoutY="269.0" text="Type:" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="30.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="editTypeOfBinSelect" layoutX="163.0" layoutY="270.0" prefHeight="44.0" prefWidth="172.0" stylesheets="@recycle.css" value="" />
+            <Button fx:id="deleteBinButton" alignment="CENTER" layoutX="432.0" layoutY="275.0" mnemonicParsing="false" onAction="#deleteBin" prefHeight="38.0" prefWidth="132.0" style="-fx-background-color: #DD4400;" text="Delete Bin" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="17.0" />
+               </font>
+            </Button>
+            <ComboBox fx:id="editSelectCategoryBox" layoutX="400.0" layoutY="223.0" prefHeight="32.0" prefWidth="166.0" promptText="Category" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="lostConnectionPane" layoutY="-3.0" prefHeight="675.0" prefWidth="1000.0" style="-fx-background-color: rgb(0,0,0,0.5);" visible="false">
+         <children>
+            <Button layoutX="389.0" layoutY="316.0" mnemonicParsing="false" onAction="#restartConnection" prefHeight="54.0" prefWidth="247.0" style="-fx-background-radius: 10;" text=" Refresh Connection" textAlignment="CENTER">
+               <font>
+                  <Font name="Avenir Book" size="21.0" />
+               </font>
+            </Button>
+            <Button layoutX="389.0" layoutY="385.0" mnemonicParsing="false" onAction="#logoutOnAction" prefHeight="54.0" prefWidth="247.0" style="-fx-background-radius: 10;" text="LOG OUT" textAlignment="CENTER">
+               <font>
+                  <Font name="Avenir Book" size="21.0" />
+               </font>
+            </Button>
+            <Label alignment="CENTER" layoutX="9.0" layoutY="226.0" prefHeight="59.0" prefWidth="1000.0" text="BAD CONNECTION!" textFill="#ff3f3f">
+               <font>
+                  <Font name="Avenir Next Bold" size="50.0" />
+               </font>
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" height="65.22" radius="32.11" width="65.22" />
+               </effect>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</Pane>

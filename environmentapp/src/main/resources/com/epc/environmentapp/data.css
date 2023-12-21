@@ -1,0 +1,18 @@
+.tab-pane{
+    -fx-tab-min-width: 100px;
+    -fx-tab-min-height: 40px;
+}
+
+.tab-pane .tab{
+    -fx-font-family: Avenir Next;
+    -fx-font-size: 13px;
+}
+.choice-box{
+    -fx-font-family: Avenir Next;
+    -fx-font-size: 15px;
+}
+
+.date-picker{
+    -fx-font-family: Avenir Next;
+    -fx-font-size: 13px;
+}
